@@ -84,7 +84,7 @@ int					get_next_line(int fd, char **line)
 	while ((readsize = read(fd, buf, BUFFER_SIZE)) > 0)//읽어들인 크기
 	{
 		buf[readsize] = '\0';
-		backup[fd] = ft_strjoin(backup[fd], buf);
+		backup[fd] = ft_strjoin_gnl(backup[fd], buf);
 		if ((cut = isin_newline(backup[fd])) >= 0)
 			return (get_one_line(&backup[fd], line, cut));
 	}

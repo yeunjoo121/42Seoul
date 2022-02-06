@@ -33,7 +33,12 @@ char			*ft_strdup(const char *s1)
 	return (p);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+void ft_strjoin_init(char *s1, char *s2, size_t sindex1, size_t sindex2)
+{
+	sindex1 = ft_strlen(s1);
+	sindex2 = ft_strlen(s2);
+}
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	size_t	sindex1;
 	size_t	sindex2;
@@ -43,10 +48,11 @@ char	*ft_strjoin(char *s1, char *s2)
 	
 	if (!(s1) && !(s2))
 		return NULL;
-	else if (!(s1) || !(s2))
-		return (!(s1) ? (ft_strdup(s2)) : ft_strdup(s1));
-	sindex1 = ft_strlen(s1);
-	sindex2 = ft_strlen(s2);
+	else if (!(s1))
+		return (ft_strdup(s2));
+	else if (!(s2))
+		return (ft_strdup(s1));
+	ft_strjoin_init(s1, s2, sindex1, sindex2);
 	index = 0;
 	strindex = 0;
 	if (!(str = (char*)malloc(sizeof(char) * (sindex1 + sindex2 + 1))))
