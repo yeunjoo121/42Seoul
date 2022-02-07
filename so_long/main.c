@@ -94,13 +94,12 @@ int main(int argc, char **argv)
 
     map_arg_first_init(&m);
     if (is_valid_argv(argc, argv) == FALSE)
-    {
         so_long_error(1);//invalid main arguments
-    }
     fd = open(argv[1], O_RDONLY);
     if (fd < 0)//파일 찾지 못함
         so_long_error(2);
     map_parsing(fd, &map);
+    /*
     {
         int i = 0;
         while(map[i])
@@ -108,7 +107,8 @@ int main(int argc, char **argv)
             printf("%s\n", map[i]);
             i++;
         }
-    }
+    }*/
     is_valid_map(map, &m);
+    gui_window();
     return (0);
 }
